@@ -11,7 +11,7 @@ def howManyMedals(df, name):
     infos.dropna(inplace=True)
     infos.drop('Name', axis=1, inplace=True)
     infos.Medal = infos.Medal.map(lambda n: n[0])
-    dic = {year:None for year in infos.Year.unique()}
+    dic = {year: None for year in infos.Year.unique()}
     for y in dic.keys():
         medals_count = infos[infos.Year == y].Medal.to_list()
         dic[y] = {'G': medals_count.count('G'),
