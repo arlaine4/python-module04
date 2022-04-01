@@ -4,4 +4,5 @@ from FileLoader import FileLoader
 fl = FileLoader()
 df = fl.load('../athlete_events.csv')
 mpl = MyPlotLib()
-mpl.histogram(df, ['Height', 'Weight'])
+# mpl.histogram(df, ['Height', 'Weight', 'Age', 'Bonsoir'])
+mpl.density(df, ['Height', 'Weight'])
