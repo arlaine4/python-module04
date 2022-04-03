@@ -50,8 +50,9 @@ class Komparator:
             return None
         df = self.df.filter([numerical_var, categorical_var])
         df.dropna(subset=[categorical_var, numerical_var], inplace=True)
-        fig = plt.figure(figsize=(12, 12))
-        single_values = list(df[categorical_var].unique())
-        for value in single_values:
-            # TODO
-            pass
+        ax = df.boxplot(by=categorical_var)
+        ax.set_ylabel(numerical_var)
+        ax.set_xlabel(categorical_var)
+        plt.title(f'{categorical_var} over {numerical_var}')
+        plt.show()
+
