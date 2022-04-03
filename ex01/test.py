@@ -1,9 +1,12 @@
 from YoungFellah import youngfellah
 from FileLoader import FileLoader
+import os
 
 fl = FileLoader()
-data = fl.load('../athlete_events.csv')
-test1 = youngfellah(data, 2004)
-print(test1)
-test2 = youngfellah(data, 1991)
-print(test2)
+data = fl.load(os.environ['CSV_PATH'])
+print(youngfellah(data, 1992))
+print(youngfellah(data, 2004))
+print(youngfellah(data, 2010))
+print(youngfellah(data, 2003))
+print(youngfellah(data, 'bonsoir'))
+print(youngfellah(data, None))

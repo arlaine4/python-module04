@@ -1,7 +1,8 @@
 from FileLoader import FileLoader
+import os
 
 fl = FileLoader()
-data = fl.load('../athlete_events.csv')
+data = fl.load(os.environ['CSV_PATH'])
 fl.display(data, 12)
 # fl.display(data, -12)
 # fl.display(data, 0)
