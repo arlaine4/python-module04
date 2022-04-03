@@ -1,9 +1,11 @@
 from Komparator import *
 from FileLoader import *
+import os
 
 fl = FileLoader()
-df = fl.load('athlete_events.csv')
+df = fl.load(os.environ['CSV_PATH'])
 k = Komparator(df)
-# k.compare_histograms('Medal', 'Weight')
-# k.density('Medal', 'Height')
-k.compare_box_plots('Sex', 'Height')
+# k.compare_box_plots('Medal', 1)
+# k.compare_box_plots('Medal', 'Age')
+k.compare_histograms('Medal', 'Height')
+k.density('Medal', 'Weight')
