@@ -11,7 +11,7 @@ class MyPlotLib:
     @staticmethod
     def get_lines_cols(len_f):
         if len_f % 2 == 0:
-            lines = len_f / 2
+            lines = int(len_f / 2)
             cols = 2
         else:
             cols = len_f
@@ -22,9 +22,9 @@ class MyPlotLib:
     def histogram(data, features):
         if not isinstance(features, list) or not isinstance(data, pd.DataFrame):
             return None
-        if len(features) <= 1:
+        if len(features) == 0:
             sys.exit('Not enough features')
-        fig = plt.figure(figsize=(len(features) + 10, len(features) + 5))
+        fig = plt.figure(figsize=(len(features) + 10, len(features) + 6))
         lines, cols = MyPlotLib.get_lines_cols(len(features))
         for i, feature in enumerate(features):
             if feature not in data.columns:
@@ -39,7 +39,7 @@ class MyPlotLib:
     def density(data, features):
         if not isinstance(features, list) or not isinstance(data, pd.DataFrame):
             return None
-        if len(features) <= 1:
+        if len(features) == 0:
             sys.exit('Not enough features')
         for i, feature in enumerate(features):
             if feature not in data.columns:
@@ -53,7 +53,7 @@ class MyPlotLib:
     def pair_plot(data, features):
         if not isinstance(features, list) or not isinstance(data, pd.DataFrame):
             return None
-        if len(features) <= 1:
+        if len(features) == 0:
             sys.exit('Not enough features')
         lst_features = [f for f in features if f in data.columns]
         if len(lst_features) != len(features):
@@ -67,7 +67,7 @@ class MyPlotLib:
     def box_plot(data, features):
         if not isinstance(features, list) or not isinstance(data, pd.DataFrame):
             return None
-        if len(features) <= 1:
+        if len(features) == 0:
             sys.exit('Not enough features')
         lst_features = [f for f in features if f in data.columns]
         if len(lst_features) != len(features):
