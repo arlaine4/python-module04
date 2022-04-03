@@ -1,5 +1,6 @@
 from copy import deepcopy
 import pandas as pd
+import numpy as np
 
 
 def howManyMedals(df, name):
@@ -8,9 +9,8 @@ def howManyMedals(df, name):
     if 'Name' not in df.columns or 'Sex' not in df.columns or 'Medal' not in df.columns:
         return None
     infos = df.filter(['Name', 'Medal', 'Year'])[(df.Name == name)]
-    infos.dropna(inplace=True)
     infos.drop('Name', axis=1, inplace=True)
-    infos.Medal = infos.Medal.map(lambda n: n[0])
+    infos.Medal = infos.Medal.map(lambda n: n[0] if isinstance(n, str) else 'N')
     dic = {year: None for year in infos.Year.unique()}
     for y in dic.keys():
         medals_count = infos[infos.Year == y].Medal.to_list()
