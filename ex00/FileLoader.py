@@ -7,7 +7,7 @@ class FileLoader:
     def load(path, sep=','):
         try:
             df = pd.read_csv(path, sep=sep)
-        except FileNotFoundError:
+        except (FileNotFoundError, pd.errors.EmptyDataError):
             print(f"Invalid file {path}")
             return
         print(f'Loading dataset of dimensions {df.shape[0]} x {df.shape[1]}')
